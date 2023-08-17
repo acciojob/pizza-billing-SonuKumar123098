@@ -6,9 +6,10 @@ public class Pizza {
     private Boolean isVeg;
     private String bill;
     protected boolean topping=false;
-    protected boolean cheese=false;
-    protected boolean away=false;
-    protected boolean billgenrated=false;
+    private boolean cheese=false;
+    private boolean away=false;
+    private boolean billgenrated=false;
+
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
@@ -39,32 +40,42 @@ public class Pizza {
     public String getBill(){
         // your code goes here
 //        this.price=0;
-        if( isVeg){
-            if(!billgenrated)this.price+=300;
-            System.out.println("Base Price Of The Pizza: 300");
-        }else  {
-            System.out.println("Base Price Of The Pizza: 400");
-           if(!billgenrated)this.price += 400;
-        }
-        if(cheese){
-            if(!billgenrated)this.price+=80;
-            System.out.println("Extra Cheese Added: 80");
-        }
-        if( topping){
-            if(isVeg){
-                if(!billgenrated)this.price+=70;
-                System.out.println("Extra Toppings Added: 70");
+        if(!billgenrated) {
+            bill="";
+            if (isVeg) {
+                this.price += 300;
+                bill += "Base Price Of The Pizza: 300";
+                bill += "\n";
+            } else {
+                bill += "Base Price Of The Pizza: 400";
+                bill+="\n";
+                this.price += 400;
             }
-            else{
-                if(!billgenrated)this.price+=120;
-                System.out.println("Extra Toppings Added: 120");
+            if (cheese) {
+                this.price += 80;
+                bill+="Extra Cheese Added: 80";
+                bill+="\n";
             }
+            if (topping) {
+                if (isVeg) {
+                    this.price += 70;
+                    bill+="Extra Toppings Added: 70";
+                    bill+="\n";
+                } else {
+                    this.price += 120;
+                    bill+="Extra Toppings Added: 120";
+                    bill+="\n";
+                }
+            }
+            if (away) {
+                this.price += 20;
+                bill+="Paperbag Added: 20";
+                bill+="\n";
+            }
+            billgenrated = true;
+            bill+=("Total Price: " +this.price);
+            bill+="\n";
         }
-        if(away){
-            if(!billgenrated)this.price+=20;
-            System.out.println("Paperbag Added: 20");
-        }
-       billgenrated=true;
-        return "Total Price: "+this.price;
+        return bill;
     }
 }
