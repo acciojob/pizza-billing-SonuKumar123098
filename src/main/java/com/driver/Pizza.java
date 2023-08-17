@@ -39,7 +39,11 @@ public class Pizza {
         // your code goes here
         if(isVeg){
             this.price+=300;
-        }else this.price+=400;
+            System.out.println("Base Price Of The Pizza: 300");
+        }else {
+            System.out.println("Base Price Of The Pizza: 400");
+            this.price += 400;
+        }
         if(cheese){
             this.price+=80;
             System.out.println("Extra Cheese Added: 80");
@@ -58,6 +62,10 @@ public class Pizza {
             this.price+=20;
             System.out.println("Paperbag Added: 20");
         }
+//        isVeg=false;
+//        topping=false;
+//        cheese=false;
+//        away=false;
         return "Total Price: "+this.price;
     }
 }
