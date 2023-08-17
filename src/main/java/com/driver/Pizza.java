@@ -8,6 +8,7 @@ public class Pizza {
     protected boolean topping=false;
     protected boolean cheese=false;
     protected boolean away=false;
+    protected boolean billgenrated=false;
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
@@ -37,35 +38,33 @@ public class Pizza {
 
     public String getBill(){
         // your code goes here
-        if(isVeg){
-            this.price+=300;
+//        this.price=0;
+        if( isVeg){
+            if(!billgenrated)this.price+=300;
             System.out.println("Base Price Of The Pizza: 300");
-        }else {
+        }else  {
             System.out.println("Base Price Of The Pizza: 400");
-            this.price += 400;
+           if(!billgenrated)this.price += 400;
         }
         if(cheese){
-            this.price+=80;
+            if(!billgenrated)this.price+=80;
             System.out.println("Extra Cheese Added: 80");
         }
-        if(topping){
+        if( topping){
             if(isVeg){
-                this.price+=70;
+                if(!billgenrated)this.price+=70;
                 System.out.println("Extra Toppings Added: 70");
             }
             else{
-                this.price+=120;
+                if(!billgenrated)this.price+=120;
                 System.out.println("Extra Toppings Added: 120");
             }
         }
         if(away){
-            this.price+=20;
+            if(!billgenrated)this.price+=20;
             System.out.println("Paperbag Added: 20");
         }
-//        isVeg=false;
-//        topping=false;
-//        cheese=false;
-//        away=false;
+       billgenrated=true;
         return "Total Price: "+this.price;
     }
 }
