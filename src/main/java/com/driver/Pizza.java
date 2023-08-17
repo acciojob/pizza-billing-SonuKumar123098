@@ -18,6 +18,11 @@ public class Pizza {
         topping=false;
         away=false;
         cheese=false;
+        if(isVeg) {
+            this.price = 300;
+        }else this.price=400;
+        this.bill="";
+
     }
 
     public int getPrice(){
@@ -44,16 +49,14 @@ public class Pizza {
     public String getBill(){
         // your code goes here
         if(!billgenrated) {
-            bill="";
-            this.price=0;
             if (isVeg) {
-                this.price += 300;
+//                this.price += 300;
                 bill += "Base Price Of The Pizza: 300";
                 bill += "\n";
             } else {
                 bill += "Base Price Of The Pizza: 400";
                 bill+="\n";
-                this.price += 400;
+//                this.price += 400;
             }
             if (cheese) {
                 this.price += 80;
@@ -80,6 +83,6 @@ public class Pizza {
             bill+=("Total Price: " +this.price);
             bill+="\n";
         }
-        return bill;
+        return this.bill;
     }
 }
