@@ -31,18 +31,27 @@ public class Pizza {
 
     public void addExtraCheese(){
         // your code goes here
-        cheese=true;
+        if(!cheese && !billgenrated){
+            cheese=true;
+            this.price += 80;
+        }
     }
 
     public void addExtraToppings(){
         // your code goes here
-        topping=true;
-
+        if(!topping && !billgenrated){
+            if(isVeg) this.price+=70;
+            else this.price+=120;
+            topping=true;
+        }
     }
 
     public void addTakeaway(){
         // your code goes here
-        away=true;
+        if(!away && !billgenrated){
+            away=true;
+            this.price+=20;
+        }
 
     }
 
@@ -51,31 +60,30 @@ public class Pizza {
         if(!billgenrated) {
             if (isVeg) {
 //                this.price += 300;
-                bill += "Base Price Of The Pizza: 300";
-                bill += "\n";
+                this.bill += "Base Price Of The Pizza: 300";
+                this.bill += "\n";
             } else {
                 bill += "Base Price Of The Pizza: 400";
                 bill+="\n";
 //                this.price += 400;
             }
             if (cheese) {
-                this.price += 80;
                 bill+="Extra Cheese Added: 80";
                 bill+="\n";
             }
             if (topping) {
                 if (isVeg) {
-                    this.price += 70;
+
                     bill+="Extra Toppings Added: 70";
                     bill+="\n";
                 } else {
-                    this.price += 120;
+//                    this.price += 120;
                     bill+="Extra Toppings Added: 120";
                     bill+="\n";
                 }
             }
             if (away) {
-                this.price += 20;
+//                this.price += 20;
                 bill+="Paperbag Added: 20";
                 bill+="\n";
             }
