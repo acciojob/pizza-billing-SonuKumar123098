@@ -5,15 +5,19 @@ public class Pizza {
     private int price;
     private Boolean isVeg;
     private String bill;
-    protected boolean topping=false;
-    private boolean cheese=false;
-    private boolean away=false;
-    private boolean billgenrated=false;
+    protected boolean topping;
+    private boolean cheese;
+    private boolean away;
+    private boolean billgenrated;
 
 
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         // your code goes here
+        billgenrated=false;
+        topping=false;
+        away=false;
+        cheese=false;
     }
 
     public int getPrice(){
@@ -39,9 +43,9 @@ public class Pizza {
 
     public String getBill(){
         // your code goes here
-//        this.price=0;
         if(!billgenrated) {
             bill="";
+            this.price=0;
             if (isVeg) {
                 this.price += 300;
                 bill += "Base Price Of The Pizza: 300";
